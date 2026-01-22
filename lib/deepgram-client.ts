@@ -21,9 +21,9 @@ export class DeepgramClient {
   connect(apiKey: string, model: string = 'nova-3', language: string = 'multi') {
     // Dynamically build the endpoint based on settings
     const endpoint = `wss://api.deepgram.com/v1/listen?endpointing=false&punctuate=true&smart_format=true&vad_events=true&language=${language}&model=${model}&encoding=linear16&sample_rate=16000`;
-    
+
     this.socket = new WebSocket(endpoint, ['token', apiKey]);
-    
+
     this.socket.onopen = () => {
       console.log(`Deepgram connected (model: ${model}, language: ${language})`);
       this.emitter.emit('open');
@@ -34,7 +34,7 @@ export class DeepgramClient {
         const data = JSON.parse(event.data);
         const transcript = data.channel?.alternatives?.[0]?.transcript;
         const isFinal = data.is_final;
-        
+
         if (transcript) {
           this.emitter.emit('transcript', transcript, isFinal);
         }
@@ -44,12 +44,12 @@ export class DeepgramClient {
     };
 
     this.socket.onerror = (err) => {
-      console.error('Deepgram socket error', err);
+      console.error('Deepgram socket error:', err);
       this.emitter.emit('error', err);
     };
 
-    this.socket.onclose = () => {
-      console.log('Deepgram closed');
+    this.socket.onclose = (event) => {
+      console.log(`Deepgram closed (code: ${event.code}, reason: ${event.reason || 'none'})`);
       this.emitter.emit('close');
     };
   }
