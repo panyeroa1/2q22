@@ -14,7 +14,7 @@ const PopUp: React.FC<PopUpProps> = ({ onClose }) => {
   return (
     <div className="popup-overlay">
       <div className="popup-content">
-        <h2>Welcome to Eburon Translator</h2>
+        <h2>Welcome to Translator</h2>
         <p>Your real-time AI interpreter with smart polishing and advanced function calling.</p>
         <p>To get started:</p>
         <ol>

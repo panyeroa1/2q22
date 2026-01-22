@@ -13,5 +13,5 @@ e:I[4835,[],""]
 6:{}
 7:{}
 d:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-b:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"Eburon Translator"}],["$","meta","2",{"name":"description","content":"Real-time AI Translation and Function Calling"}]]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"Translator"}],["$","meta","2",{"name":"description","content":"Real-time AI Translation and Function Calling"}]]
 9:null

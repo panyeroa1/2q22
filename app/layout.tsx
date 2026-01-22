@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "Eburon Translator",
+    title: "Translator",
     description: "Real-time AI Translation and Function Calling",
 };
 

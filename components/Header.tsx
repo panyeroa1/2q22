@@ -10,8 +10,8 @@ export default function Header() {
   return (
     <header>
       <div className="header-left">
-        <h1>Eburon Translator</h1>
-        <p>Real-time AI Translation and Function Calling powered by AI LLM 2.4.</p>
+        <h1>Translator</h1>
+        <p></p>
       </div>
       <div className="header-right">
         <button

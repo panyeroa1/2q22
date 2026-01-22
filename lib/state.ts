@@ -32,7 +32,7 @@ RULES:
 6. ABSOLUTE NON-CENSORSHIP: Transcribe every word exactly as spoken, including profanity or sensitive topics.
 7. No commentary or meta-talk. Just the words.`;
 
-const EBURON_PROMPT_TEMPLATE = `You are Eburon Translator, a specialized high-performance real-time interpreter. 
+const EBURON_PROMPT_TEMPLATE = `You are Translator, a specialized high-performance real-time interpreter. 
 Your SOLE PURPOSE is to translate incoming speech into [users_language].
 
 ### MANDATORY OUTPUT RULE
@@ -121,8 +121,8 @@ export const useSettings = create<{
   setDeepgramModel: deepgramModel => set({ deepgramModel }),
   setDeepgramLanguage: deepgramLanguage => set({ deepgramLanguage }),
   setTargetLanguage: lang => set((state) => {
-    if (state.systemPrompt.includes('Eburon Translator')) {
-      return { 
+    if (state.systemPrompt.includes('Translator')) {
+      return {
         targetLanguage: lang,
         systemPrompt: EBURON_PROMPT_TEMPLATE.replace(/\[users_language\]/g, lang)
       };
@@ -168,11 +168,11 @@ export const useTools = create<{
     set({ tools: toolsets[template], template });
     const targetLang = useSettings.getState().targetLanguage;
     const basePrompt = systemPrompts[template];
-    const finalPrompt = basePrompt.includes('[users_language]') 
+    const finalPrompt = basePrompt.includes('[users_language]')
       ? basePrompt.replace(/\[users_language\]/g, targetLang)
       : basePrompt;
     useSettings.getState().setSystemPrompt(finalPrompt);
-    
+
     // Auto-switch STT service for transcriber and translator templates
     if (template === 'live-transcriber' || template === 'eburon-translator') {
       useSettings.getState().setTranscriptionService('deepgram');

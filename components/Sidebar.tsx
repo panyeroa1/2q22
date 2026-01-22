@@ -74,7 +74,7 @@ export default function Sidebar() {
               <label>
                 Persona Template
                 <select value={template} onChange={e => setTemplate(e.target.value as any)}>
-                  <option value="eburon-translator">Eburon Translator</option>
+                  <option value="eburon-translator">Translator</option>
                   <option value="live-transcriber">Live Transcriber</option>
                   <option value="customer-support">Customer Support</option>
                   <option value="personal-assistant">Personal Assistant</option>
