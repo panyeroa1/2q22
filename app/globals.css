@@ -33,8 +33,7 @@ code {
   --accent-red: #ff4600;
   --background: var(--gray-900);
   --color: var(--text);
-  scrollbar-color: var(--gray-600) var(--gray-900);
-  scrollbar-width: thin;
+  /* scrollbar logic moved or standard */
   --font-family: 'google sans' 'Space Mono', monospace;
   /* Colors */
   --Neutral-00: #000;
@@ -61,6 +60,10 @@ code {
   --lime: #ccff00;
   --panel-bg: rgba(20, 20, 20, 0.85);
   --glass-border: rgba(255, 255, 255, 0.1);
+
+  /* Success Class Layout */
+  --header-height: 48px;
+  --dock-height: 80px;
   --card-background: #13151a;
   --card-border-radius: 16px;
 
