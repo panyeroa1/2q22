@@ -109,7 +109,7 @@ export const useSettings = create<{
   streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/CSPANRADIOAAC.aac',
   transcriptionService: 'deepgram',
   deepgramApiKey: process.env.NEXT_PUBLIC_DEEPGRAM_API_KEY || '',
-  deepgramModel: 'nova-3',
+  deepgramModel: 'nova-2',
   deepgramLanguage: 'multi',
   setSystemPrompt: prompt => set({ systemPrompt: prompt }),
   setModel: model => set({ model }),

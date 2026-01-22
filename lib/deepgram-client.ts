@@ -18,11 +18,24 @@ export class DeepgramClient {
   public on = this.emitter.on.bind(this.emitter);
   public off = this.emitter.off.bind(this.emitter);
 
-  connect(apiKey: string, model: string = 'nova-3', language: string = 'multi') {
-    // Dynamically build the endpoint based on settings
-    const endpoint = `wss://api.deepgram.com/v1/listen?endpointing=false&punctuate=true&smart_format=true&vad_events=true&language=${language}&model=${model}&encoding=linear16&sample_rate=16000`;
+  public async connect(
+    apiKey: string,
+    model: string = 'nova-2',
+    language: string = 'en'
+  ): Promise<void> {
+    if (!apiKey) {
+      const err = new Error('Deepgram API Key is missing');
+      console.error('Deepgram connect error:', err.message);
+      this.emitter.emit('error', err);
+      return;
+    }
 
-    this.socket = new WebSocket(endpoint, ['token', apiKey]);
+    const maskedKey = apiKey.slice(0, 4) + '...' + apiKey.slice(-4);
+    const url = `wss://api.deepgram.com/v1/listen?model=${model}&language=${language}&smart_format=true&encoding=linear16&sample_rate=16000`;
+
+    console.log(`Connecting to Deepgram: model=${model}, lang=${language}, key=${maskedKey}`);
+
+    this.socket = new WebSocket(url, ['token', apiKey]);
 
     this.socket.onopen = () => {
       console.log(`Deepgram connected (model: ${model}, language: ${language})`);
