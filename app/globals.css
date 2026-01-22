@@ -250,8 +250,8 @@ textarea {
 
 input::placeholder,
 textarea::placeholder {
-  user-select: none;
   -webkit-user-select: none;
+  user-select: none;
 }
 
 select {
